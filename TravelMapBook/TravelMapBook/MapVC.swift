@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class MapVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate {
+class MapVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -65,11 +65,20 @@ class MapVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate {
             placeNameLabel.text = givenTitle
             commentLabel.text = givenSubtitle
             
+           
             
             
             
         }
         
+    }
+    
+    
+    
+    //HIDE KEYBOARD AFTER TYPING
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        view.endEditing(true)
     }
 
     
@@ -211,7 +220,6 @@ class MapVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate {
         
         
     }
-    
     
     
 

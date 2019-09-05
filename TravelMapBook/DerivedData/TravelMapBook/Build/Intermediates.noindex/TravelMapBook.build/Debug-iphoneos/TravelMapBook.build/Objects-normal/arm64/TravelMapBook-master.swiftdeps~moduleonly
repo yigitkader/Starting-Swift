@@ -1,0 +1,10 @@
+version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+options: "6618b29a442df881c2d689d37fe48a6e"
+build_time: [1567706441, 747122000]
+inputs:
+  "/Users/calzom/Desktop/SwiftProjects/TravelMapBook/TravelMapBook/MapVC.swift": [1567705040, 565453241]
+  "/Users/calzom/Desktop/SwiftProjects/TravelMapBook/TravelMapBook/AppDelegate.swift": [1567513440, 863222279]
+  "/Users/calzom/Desktop/SwiftProjects/TravelMapBook/TravelMapBook/TableVC.swift": [1567676490, 169698743]
+  "/Users/calzom/Desktop/SwiftProjects/TravelMapBook/DerivedData/TravelMapBook/Build/Intermediates.noindex/TravelMapBook.build/Debug-iphoneos/TravelMapBook.build/DerivedSources/CoreDataGenerated/TravelMapBook/Places+CoreDataClass.swift": [1567706441, 427471957]
+  "/Users/calzom/Desktop/SwiftProjects/TravelMapBook/DerivedData/TravelMapBook/Build/Intermediates.noindex/TravelMapBook.build/Debug-iphoneos/TravelMapBook.build/DerivedSources/CoreDataGenerated/TravelMapBook/Places+CoreDataProperties.swift": [1567706441, 434271678]
+  "/Users/calzom/Desktop/SwiftProjects/TravelMapBook/DerivedData/TravelMapBook/Build/Intermediates.noindex/TravelMapBook.build/Debug-iphoneos/TravelMapBook.build/DerivedSources/CoreDataGenerated/TravelMapBook/TravelMapBook+CoreDataModel.swift": [1567706441, 416485771]

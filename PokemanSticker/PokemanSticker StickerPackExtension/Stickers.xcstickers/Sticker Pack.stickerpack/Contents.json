@@ -1,0 +1,20 @@
+{
+  "stickers" : [
+    {
+      "filename" : "pikachu.sticker"
+    },
+    {
+      "filename" : "charmander.sticker"
+    },
+    {
+      "filename" : "balbasaur.sticker"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "grid-size" : "regular"
+  }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>E346A73C-E794-42AC-8E51-E3C39E6D8A7A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.target.product-type.application</string>
+			<key>fileName</key>
+			<string>E346A73C-E794-42AC-8E51-E3C39E6D8A7A.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>signature</key>
+			<string>TravelMapBook-gepmqrswfawycebpwhpvfgnwkekp</string>
+			<key>timeStartedRecording</key>
+			<real>589399240.33601999</real>
+			<key>timeStoppedRecording</key>
+			<real>589399281.50402498</real>
+			<key>title</key>
+			<string>Build target TravelMapBook</string>
+			<key>uniqueIdentifier</key>
+			<string>E346A73C-E794-42AC-8E51-E3C39E6D8A7A</string>
+		</dict>
+	</dict>
+	<key>preserveOldLogs</key>
+	<true/>
+</dict>
+</plist>
