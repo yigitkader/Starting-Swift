@@ -162,33 +162,43 @@ class DetailsViewController: UIViewController , UIImagePickerControllerDelegate 
                     //set image
                 
                 
-                if imageIsNullOrNot(imageName: imageView.image!) {
-                    //image is not null
+                if imageView.image != UIImage(named: "kamera.png") {
                     
-                    let data = imageView.image?.jpegData(compressionQuality: 0.5) // reduce size half
-                    newArt.setValue(data, forKey: "image")
+                    if imageIsNullOrNot(imageName: imageView.image!){
+                        //image is not null
+                        
+                        let data = imageView.image?.jpegData(compressionQuality: 0.5) // reduce size half
+                        newArt.setValue(data, forKey: "image")
+                        
+                        
+                        do {
+                            
+                            try context.save()
+                            print("no error")
+                            
+                        }catch{
+                            
+                            //show alert to user
+                            warningAlert()
+                            print("error")
+                        }
+                    }
+                    else{
+                        //image is null
+                    }
+                    
+                    
+                        
+                        
                 }
-                else
-                {
-                    // image is null
+                else{
                     emptyAlert()
                 }
+                    
                 
+                    
+                    
                 
-                    
-                    
-                    
-                    do {
-                        
-                        try context.save()
-                        print("no error")
-                        
-                    }catch{
-                        
-                        //show alert to user
-                        warningAlert()
-                        print("error")
-                    }
                     
                     
                     
