@@ -160,8 +160,21 @@ class DetailsViewController: UIViewController , UIImagePickerControllerDelegate 
                     newArt.setValue(num, forKey: "year")
                     
                     //set image
+                
+                
+                if imageIsNullOrNot(imageName: imageView.image!) {
+                    //image is not null
+                    
                     let data = imageView.image?.jpegData(compressionQuality: 0.5) // reduce size half
                     newArt.setValue(data, forKey: "image")
+                }
+                else
+                {
+                    // image is null
+                    emptyAlert()
+                }
+                
+                
                     
                     
                     
@@ -212,12 +225,27 @@ class DetailsViewController: UIViewController , UIImagePickerControllerDelegate 
     }
     
     
+    //IMAGE CONTROL FUNCTION
+    func imageIsNullOrNot(imageName : UIImage)-> Bool
+    {
+        
+        let size = CGSize(width: 0, height: 0)
+        if (imageName.size.width == size.width)
+        {
+            return false
+        }
+        else
+        {
+            return true
+        }
+    }
+    
     
     //ALERTS
     
     func emptyAlert(){
         
-        let alert = UIAlertController(title: "Warning", message: "Please dont use blank characters ", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Warning", message: "Please dont use blank characters and photos ", preferredStyle: UIAlertController.Style.alert)
         let okButton =  UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
         
         alert.addAction(okButton)
