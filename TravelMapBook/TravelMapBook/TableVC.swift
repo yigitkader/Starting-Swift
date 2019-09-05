@@ -93,6 +93,59 @@ class TableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
     }
+    
+    
+    
+    //DELETE OPERATION
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
+            
+            
+            do{
+                
+                let results = try context.fetch(fetchRequest)
+                
+                for result in results as! [NSManagedObject] {
+                    
+                    if let  title = result.value(forKey: "title") as? String {
+                        
+                        if title == titleArray[indexPath.row] {
+                            
+                            context.delete(result)
+                            titleArray.remove(at: indexPath.row)
+                            subtitleArray.remove(at: indexPath.row)
+                            latitudeArray.remove(at: indexPath.row)
+                            longitudeArray.remove(at: indexPath.row)
+                            self.tableView.reloadData()
+                            
+                            
+                            do{
+                                try context.save()
+                            }catch{
+                                
+                            }
+                        
+                            break
+                        }
+                    }
+                    
+                }
+                
+            }catch{
+                
+                
+            }
+        }
+    }
+    
+    
+    
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
