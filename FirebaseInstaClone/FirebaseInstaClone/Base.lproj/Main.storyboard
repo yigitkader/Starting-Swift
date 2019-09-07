@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Feed-->
+        <!--FeedVC-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FeedVC" customModule="FirebaseInstaClone" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,13 +20,19 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="RTU-Vh-TBe">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="RHE-f9-0SE">
+                            <connections>
+                                <action selector="logOutButton:" destination="9pv-A4-QxB" id="zHD-Ny-tHS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
         </scene>
-        <!--Upload-->
+        <!--UploadVC-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="UploadVC" customModule="FirebaseInstaClone" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,11 +42,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upload" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="BUZ-Ny-q3N"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
         </scene>
         <!--SignVC-->
         <scene sceneID="j8P-oD-Bxj">
@@ -111,13 +117,51 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="jf4-kI-ckd" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="MMv-y4-l2Z" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="71R-Ra-ZIz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jf4-kI-ckd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="first" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DhF-hl-6lS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Y1m-Pl-wDB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAr-w2-z2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+        </scene>
+        <!--Upload-->
+        <scene sceneID="l9k-hK-Jsy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MMv-y4-l2Z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Upload" image="second" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rhp-Ox-vnI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="wXm-RU-Cpc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VrW-Xj-NVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
     </scenes>
     <resources>

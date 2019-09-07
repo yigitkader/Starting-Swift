@@ -50,19 +50,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func rememberUser(){
         
+        //declare storyboard
+        let board : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBar = board.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+        let sign = board.instantiateViewController(withIdentifier: "sign") as! SignVC
         
         let user : String? = UserDefaults.standard.string(forKey: "user")
         
         if user != nil {
             
-            
-            //declare storyboard
-            let board : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let tabBar = board.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-            
+        
             //first opened wiewcontroller ?
             window?.rootViewController = tabBar
             
+        }
+        else{
+            window?.rootViewController = sign
         }
     }
     
