@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		5A1AA5D22323D552007EDB2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1AA5D02323D552007EDB2C /* LaunchScreen.storyboard */; };
 		5A1AA5DA2323D776007EDB2C /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1AA5D92323D776007EDB2C /* SignVC.swift */; };
 		5A1AA5DC2323DAAA007EDB2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A1AA5DB2323DAA9007EDB2C /* GoogleService-Info.plist */; };
+		5AC87AF12324406000025186 /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC87AF02324406000025186 /* cam.png */; };
 		F4C738314B16A37E676790E4 /* Pods_FirebaseInstaClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDF105E7FF92C664BDCC340 /* Pods_FirebaseInstaClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		5A1AA5D32323D552007EDB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1AA5D92323D776007EDB2C /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
 		5A1AA5DB2323DAA9007EDB2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5AC87AF02324406000025186 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		C831AC8183768691F4F939FB /* Pods-FirebaseInstaClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseInstaClone.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseInstaClone/Pods-FirebaseInstaClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 		5A1AA5C42323D54F007EDB2C /* FirebaseInstaClone */ = {
 			isa = PBXGroup;
 			children = (
+				5AC87AF02324406000025186 /* cam.png */,
 				5A1AA5C52323D54F007EDB2C /* AppDelegate.swift */,
 				5A1AA5C72323D54F007EDB2C /* FeedVC.swift */,
 				5A1AA5C92323D54F007EDB2C /* UploadVC.swift */,
@@ -94,7 +97,6 @@
 				C831AC8183768691F4F939FB /* Pods-FirebaseInstaClone.debug.xcconfig */,
 				0F73C0CDDBA70851D9F7DF2C /* Pods-FirebaseInstaClone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -160,6 +162,7 @@
 			files = (
 				5A1AA5D22323D552007EDB2C /* LaunchScreen.storyboard in Resources */,
 				5A1AA5DC2323DAAA007EDB2C /* GoogleService-Info.plist in Resources */,
+				5AC87AF12324406000025186 /* cam.png in Resources */,
 				5A1AA5CF2323D552007EDB2C /* Assets.xcassets in Resources */,
 				5A1AA5CD2323D54F007EDB2C /* Main.storyboard in Resources */,
 			);

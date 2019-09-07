@@ -39,10 +39,45 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cam.png" translatesAutoresizingMaskIntoConstraints="NO" id="pWy-VK-EPn">
+                                <rect key="frame" x="36" y="136" width="303" height="143"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="303" id="jGf-dk-C3f"/>
+                                    <constraint firstAttribute="height" constant="143" id="xUU-q3-6df"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your comment .." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnr-WD-Erg">
+                                <rect key="frame" x="36" y="318" width="303" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBg-MG-60f">
+                                <rect key="frame" x="308" y="377" width="31" height="30"/>
+                                <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="postButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ZlX-qL-Y9o"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IBg-MG-60f" firstAttribute="top" secondItem="mnr-WD-Erg" secondAttribute="bottom" constant="29" id="P3f-c5-45k"/>
+                            <constraint firstItem="mnr-WD-Erg" firstAttribute="top" secondItem="pWy-VK-EPn" secondAttribute="bottom" constant="39" id="Zk6-f6-546"/>
+                            <constraint firstItem="pWy-VK-EPn" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="72" id="cxF-EZ-VNS"/>
+                            <constraint firstItem="pWy-VK-EPn" firstAttribute="trailing" secondItem="mnr-WD-Erg" secondAttribute="trailing" id="heJ-Ud-a8V"/>
+                            <constraint firstItem="pWy-VK-EPn" firstAttribute="leading" secondItem="mnr-WD-Erg" secondAttribute="leading" id="lRi-Mf-63T"/>
+                            <constraint firstItem="pWy-VK-EPn" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="nd9-x5-hr8"/>
+                            <constraint firstItem="mnr-WD-Erg" firstAttribute="trailing" secondItem="IBg-MG-60f" secondAttribute="trailing" id="r9g-Wt-fbD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" id="BUZ-Ny-q3N"/>
+                    <connections>
+                        <outlet property="commentText" destination="mnr-WD-Erg" id="bRz-Gx-1uG"/>
+                        <outlet property="imageView" destination="pWy-VK-EPn" id="ecF-jS-D4c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,6 +200,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cam.png" width="1195" height="874"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
