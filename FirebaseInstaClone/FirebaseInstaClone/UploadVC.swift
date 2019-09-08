@@ -17,6 +17,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentText: UITextField!
+    @IBOutlet weak var picLabel: UILabel!
     
     
     var newImage = UIImage(named: "cam.png")
@@ -25,10 +26,13 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        picLabel.isUserInteractionEnabled = true
+        
+        
         //imageview tap settings
-        imageView.isUserInteractionEnabled = true
+        //imageView.isUserInteractionEnabled = true
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.chooseImage))
-        imageView.addGestureRecognizer(gestureRecognizer)
+        picLabel.addGestureRecognizer(gestureRecognizer)
         
         
         
@@ -124,6 +128,17 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                 
                                 databaseReference.child("users").child((Auth.auth().currentUser?.uid)!).child("Post").childByAutoId().setValue(post)
                                 
+                                
+                                
+                                self.imageView.image = UIImage(named: "")
+                                self.commentText.text = ""
+                                //self.successAlert()
+                                
+                                //change the tab
+                                self.tabBarController?.selectedIndex = 0
+                                
+                                
+                                
                             }
                            
                             
@@ -149,15 +164,25 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
             // No Pic Data
         else{
-//            let alert = UIAlertController(title: "Error", message: "No Post", preferredStyle: UIAlertController.Style.alert)
-//            let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
-//            alert.addAction(okButton)
-//            self.present(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Error", message: "Please choose a Photo", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
         }
         
         
         
         
+    }
+    
+    
+    
+    func successAlert(){
+        
+        let alert = UIAlertController(title: "Success", message: "Post is shared", preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
