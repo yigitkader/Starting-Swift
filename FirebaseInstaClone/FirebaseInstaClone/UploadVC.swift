@@ -11,6 +11,9 @@ import Firebase
 import FirebaseStorage
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseFirestore
+
+
 
 class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -51,6 +54,8 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
     
     }
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -103,18 +108,56 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         
                         if error == nil {   //no error
                            
-                            
                             //check control
                             //print("url : \(url?.absoluteString)")
                             
-                            
                             //Database process
-                            
-                            let databaseReference =  Database.database().reference()
+                           
                             
                             let imageURL = url?.absoluteString
                             
                             
+                            //FIRESTORE DATABASE
+                            
+                            let firestoreDatabase = Firestore.firestore()
+                           
+                            if self.commentText.text != "" {
+                                
+                                let firestorePost = ["image" : imageURL! , "postedby" : Auth.auth().currentUser?.email! , "posttext" : self.commentText.text! , "date" : FieldValue.serverTimestamp() ] as [String : Any]
+                                
+                                var firestoreRef : DocumentReference? = nil
+                                
+                                firestoreRef = firestoreDatabase.collection("Posts").addDocument(data: firestorePost) {error in
+                                    
+                                    if let error = error {
+                                     
+                                        print(error.localizedDescription)
+                                    }
+                                    else{
+                                        firestoreRef?.documentID
+                                    }
+                                    
+                                }
+                                
+                                
+                                
+                                
+                            }else{
+                                
+                                let alert = UIAlertController(title: "Error", message: "Dont leave blank comment", preferredStyle: UIAlertController.Style.alert)
+                                let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+                                alert.addAction(okButton)
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                            
+                            
+                            
+                            
+                            //REAL TIME DATABASE (OLD SYSTEM)
+                            /*
+                             
+                            let databaseReference =  Database.database().reference()
+                             
                             //Comment text control
                             if self.commentText.text == "" {
                                 let alert = UIAlertController(title: "Error", message: "Dont leave blank comment", preferredStyle: UIAlertController.Style.alert)
@@ -129,19 +172,29 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                 databaseReference.child("users").child((Auth.auth().currentUser?.uid)!).child("Post").childByAutoId().setValue(post)
                                 
                                 
-                                
-                                self.imageView.image = UIImage(named: "")
-                                self.commentText.text = ""
+                                */
+                            
+                            
+                               //self.imageView.image = UIImage(named: "")
+                                //self.commentText.text = ""
                                 //self.successAlert()
-                                
+
                                 //change the tab
-                                self.tabBarController?.selectedIndex = 0
+                                //self.tabBarController?.selectedIndex = 0
+                            
+                            
                                 
                                 
-                                
-                            }
+                            //}
                            
                             
+                            self.imageView.image = UIImage(named: "")
+                            self.commentText.text = ""
+                            //self.successAlert()
+                            
+                            //change the tab
+                            self.tabBarController?.selectedIndex = 0
+
                             
                             
                             

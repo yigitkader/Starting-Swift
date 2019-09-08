@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import SDWebImage
+import FirebaseFirestore
 
 
 class FeedVC: UIViewController, UITableViewDelegate ,UITableViewDataSource {
@@ -36,51 +37,84 @@ class FeedVC: UIViewController, UITableViewDelegate ,UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
-        getDataFromFirebase()
+        
+        
+        //FİREBASE REALTIME DATABASE
+        //getDataFromFirebase()
+        
+        
+        
+        //FIREBASE FIRESTORE
+        getDataFromFirestore()
+        
+     
         
     }
 
    
     
-   @objc func getDataFromFirebase(){
-    
-//        self.userimageArray.removeAll(keepingCapacity: false)
-//        self.useremailArray.removeAll(keepingCapacity: false)
-//        self.userimageArray.removeAll(keepingCapacity: false)
-    
-        let databaseReference = Database.database().reference()
+    func getDataFromFirestore(){
         
-        databaseReference.child("users").observe(DataEventType.childAdded) { (snapshot) in
+        
+        let firestoreDatabase = Firestore.firestore()
+        
+        
+        //Filter Operation
+        //firestoreDatabase.collection("Posts").whereField(T##field: String##String, isEqualTo: T##Any).addSnapshotListener
+        
+        
+        firestoreDatabase.collection("Posts").addSnapshotListener { (snapshot, error) in
             
-//            print("children : \(snapshot.children)")
-//            print("value : \(snapshot.value)")
-//            print("key : \(snapshot.key)")
-            
-            
-            
-            let values = snapshot.value! as! NSDictionary
-            let post = values["Post"] as! NSDictionary
-            
-            let postId = post.allKeys
-            
-            for id in postId {
+            if error != nil {
                 
-                let singlePost = post[id] as! NSDictionary
+                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+
                 
-                self.usercommentArray.append(singlePost["postcomment"] as! String)
-                self.useremailArray.append(singlePost["postedby"] as! String)
-                self.userimageArray.append(singlePost["image"] as! String)
-                self.tableView.reloadData()
-                
-               
             }
-            
-            
+            else{ // no error
+                
+                self.useremailArray.removeAll(keepingCapacity: false)
+                self.usercommentArray.removeAll(keepingCapacity: false)
+                self.userimageArray.removeAll(keepingCapacity: false)
+                
+                
+                if snapshot?.isEmpty != true {
+                
+                    for document in (snapshot!.documents) {
+                        
+                        let postText = document.get("posttext") as! String
+                        let postedBy = document.get("postedby") as! String
+                        let imageUrl = document.get("image") as! String
+                        
+                        self.usercommentArray.append(postText)
+                        self.useremailArray.append(postedBy)
+                        self.userimageArray.append(imageUrl)
+                        
+                        
+                    }
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                }else{
+                    
+                }
+                
+                
+                
+                
+            }
         }
-        
+    
+    
     }
     
     
+    
+
     
     
     
@@ -88,6 +122,7 @@ class FeedVC: UIViewController, UITableViewDelegate ,UITableViewDataSource {
      
         return useremailArray.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -100,6 +135,17 @@ class FeedVC: UIViewController, UITableViewDelegate ,UITableViewDataSource {
         
         return cell
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     //LOG OUT OPERATION
@@ -131,6 +177,59 @@ class FeedVC: UIViewController, UITableViewDelegate ,UITableViewDataSource {
         
         
     }
+    
+    
+    
+    /* --  //FIREBASE REAL TIME DATABASE
+     
+     
+     //BRING DATAS
+     
+     @objc func getDataFromFirebase(){
+     
+         //self.userimageArray.removeAll(keepingCapacity: false)
+         //self.useremailArray.removeAll(keepingCapacity: false)
+         //self.userimageArray.removeAll(keepingCapacity: false)
+     
+         let databaseReference = Database.database().reference()
+     
+         databaseReference.child("users").observe(DataEventType.childAdded) { (snapshot) in
+     
+         //            print("children : \(snapshot.children)")
+         //            print("value : \(snapshot.value)")
+         //            print("key : \(snapshot.key)")
+     
+     
+     
+         let values = snapshot.value! as! NSDictionary
+         let post = values["Post"] as! NSDictionary
+     
+         let postId = post.allKeys
+     
+         for id in postId {
+     
+             let singlePost = post[id] as! NSDictionary
+     
+             self.usercommentArray.append(singlePost["postcomment"] as! String)
+             self.useremailArray.append(singlePost["postedby"] as! String)
+             self.userimageArray.append(singlePost["image"] as! String)
+             self.tableView.reloadData()
+     
+     
+             }
+     
+     
+        }
+     
+     }
+     
+     END OF BRING DATAS FROM REAL TIME DATABASE
+    ---------------------    --------------  */
+    
+    
+    
+    
+    
     
 }
 
