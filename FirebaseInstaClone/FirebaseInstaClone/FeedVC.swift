@@ -62,8 +62,8 @@ class FeedVC: UIViewController, UITableViewDelegate ,UITableViewDataSource {
         //Filter Operation
         //firestoreDatabase.collection("Posts").whereField(T##field: String##String, isEqualTo: T##Any).addSnapshotListener
         
-        
-        firestoreDatabase.collection("Posts").addSnapshotListener { (snapshot, error) in
+        //sorting to date with order
+        firestoreDatabase.collection("Posts").order(by: "date", descending: true).addSnapshotListener { (snapshot, error) in
             
             if error != nil {
                 
