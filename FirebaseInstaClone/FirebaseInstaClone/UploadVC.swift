@@ -42,6 +42,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     
+    //HIDE KEYBOARD AFTER TYPING
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        view.endEditing(true)
+    }
+    
     @objc func chooseImage(){
     
         let picker = UIImagePickerController()
@@ -140,7 +146,13 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                 }
                                 
                                 
+                                self.imageView.image = UIImage(named: "")
+                                self.commentText.text = ""
+                                //self.successAlert()
                                 
+                                //change the tab
+                                self.tabBarController?.selectedIndex = 0
+
                                 
                             }else{
                                 
@@ -188,13 +200,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                             //}
                            
                             
-                            self.imageView.image = UIImage(named: "")
-                            self.commentText.text = ""
-                            //self.successAlert()
-                            
-                            //change the tab
-                            self.tabBarController?.selectedIndex = 0
-
+                      
                             
                             
                             

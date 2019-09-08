@@ -142,12 +142,6 @@ class FeedVC: UIViewController, UITableViewDelegate ,UITableViewDataSource {
     
     
     
-    
-    
-    
-    
-    
-    
     //LOG OUT OPERATION
     @IBAction func logOutButton(_ sender: Any) {
         
