@@ -41,6 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaultACL.hasPublicWriteAccess = true
         PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
         
+        
+        //Rememeber User
+        rememberMe()
+        
         return true
     }
 
@@ -67,7 +71,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-    
+    func rememberMe(){
+        
+        let user : String? = UserDefaults.standard.string(forKey: "username")
+        
+        if user != nil {
+            
+            //creat main storyboard
+            let board : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            //reaching to tabbar
+            let tabBar = board.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+            
+            window?.rootViewController = tabBar
+            
+            
+        }
+        
+    }
 
 }
 

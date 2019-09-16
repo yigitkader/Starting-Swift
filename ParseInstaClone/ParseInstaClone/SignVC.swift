@@ -88,7 +88,16 @@ class SignVC: UIViewController {
                 }
                 else{
                     
-                    self.performSegue(withIdentifier: "toTabBar", sender: nil)
+                    //remember user
+                    UserDefaults.standard.set(self.signNickLabel.text, forKey: "username")
+                    UserDefaults.standard.synchronize()
+                    
+                    
+                    //if user not inside call this  
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.rememberMe()
+ 
+                    
                     
                 }
             }
@@ -136,7 +145,16 @@ class SignVC: UIViewController {
                 }
                 else{//no error
                     
-                    self.performSegue(withIdentifier: "toTabBar", sender: nil)
+                    
+                    //remember user
+                    UserDefaults.standard.set(self.signNickLabel.text, forKey: "username")
+                    UserDefaults.standard.synchronize()
+                    
+                    
+                    //if user not inside call this
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.rememberMe()
+                    
                     
                 }
             }
@@ -156,4 +174,14 @@ class SignVC: UIViewController {
     }
     
 
+    
+    //HIDE KEYBOARD AFTER TYPING
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        view.endEditing(true)
+    }
+    
+    
+    
+    
 }
