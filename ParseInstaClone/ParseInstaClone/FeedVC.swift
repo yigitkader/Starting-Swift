@@ -35,11 +35,27 @@ class FeedVC: UIViewController, UITableViewDelegate , UITableViewDataSource {
     }
 
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getData), name: NSNotification.Name(rawValue: "newPost"), object: nil)
+    }
     
     
-    func getData(){
+    
+    @objc func getData(){
+        
+        
+        postOwnerArray.removeAll(keepingCapacity: false)
+        postCommentArray.removeAll(keepingCapacity: false)
+        postUuidArray.removeAll(keepingCapacity: false)
+        postImageArray.removeAll(keepingCapacity: false)
+        
+        
         
         let query = PFQuery(className: "Posts")
+        
+        //sortin to date
+        query.addDescendingOrder("createdAt")
         
         query.findObjectsInBackground { (objects, error) in
             
@@ -53,6 +69,11 @@ class FeedVC: UIViewController, UITableViewDelegate , UITableViewDataSource {
                 self.present(alert, animated: true, completion: nil)
                 
             }else{
+                
+                self.postOwnerArray.removeAll(keepingCapacity: false)
+                self.postCommentArray.removeAll(keepingCapacity: false)
+                self.postUuidArray.removeAll(keepingCapacity: false)
+                self.postImageArray.removeAll(keepingCapacity: false)
                 
                 if objects!.count > 0 {
                     

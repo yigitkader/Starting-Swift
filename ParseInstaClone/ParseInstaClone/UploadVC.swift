@@ -90,14 +90,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                         alert.addAction(okButton)
                         self.present(alert, animated: true, completion: nil)
                         
-                        self.postButton.isEnabled = true
-                        
                         
                     }else{
-                    
+                        self.commentText.text = ""
                         self.tabBarController?.selectedIndex = 0
                         
-                    
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPost"), object: nil)
                     
                     }
                 }
@@ -105,22 +103,16 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
               
                 }
                 
-            else{
-                let alert = UIAlertController(title: "Error", message: "Please add comment", preferredStyle: UIAlertController.Style.alert)
+                else{
+                    let alert = UIAlertController(title: "Error", message: "Please add comment", preferredStyle: UIAlertController.Style.alert)
                 
-                let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+                    let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
                 
-                alert.addAction(okButton)
-                self.present(alert, animated: true, completion: nil)
-                
-                postButton.isEnabled = true
-            }
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true, completion: nil)
                 
                 
-                
-                
-                postButton.isEnabled = true
-                
+                }
                 
             }
             else{
@@ -132,10 +124,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
                 alert.addAction(okButton)
                 self.present(alert, animated: true, completion: nil)
             
-                postButton.isEnabled = true
+            
             
             }
-            
+        
+            self.postButton.isEnabled = true
+        
         }
     
         
